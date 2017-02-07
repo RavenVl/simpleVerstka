@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .slideshow{
+            padding: 200px;
+            width: 502px;
+        }
+        .slideshow_item{
+            display:inline-block;;
+            float: left;
+            margin-left: 23px;
+            padding: 3px;
+            border:1px dashed #000000;
+            list-style: none;
+        }
+        .slideshow_item:first-child{
+            margin-left: 0;
+        }
+        .slideshow_display{
+            width: 500px;
+            height: 400px;
+            border: 1px dashed #cccccc;
+            position: relative;
+
+        }
+        .slideshow_item:hover{
+            border: 1px solid #000000 ;
+        }
+        .slideshow_item.active{
+            border: 1px solid #000000 ;
+        }
+
+        .slideshow_display img{
+            display: block;
+            position: absolute;
+            top:0;bottom:0;left:0;right:0;
+            margin:auto;
+        }
+        .slideshow_list{
+            padding-top: 15px;
+        }
+    </style>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script>
+        $(function () {
+            $('.slideshow_pic').on('click', function (e) {
+                e.preventDefault();
+
+                var $this = $(this),
+                    item = $this.closest('.slideshow_item'),
+                    container = $this.closest('.slideshow'),
+                    display = container.find('.slideshow_display'),
+                    path = item.find('img').attr('src'),
+                    duration = 300;
+
+                display.find('img').fadeOut(duration, function () {
+                    $(this).attr('src',path).fadeIn(duration);
+                })
+
+            })
+        })
+    </script>
+    <title>Title</title>
+
+</head>
+<body>
+
+<div class="container bs-cont">
+    <div class="slideshow">
+    <div class="slideshow_display">
+        <img src="//lorempixel.com/100/80" alt="">
+
+    </div>
+    <ul class="slideshow_list">
+        <li class="slideshow_item">
+            <a class="slideshow_pic" href="#">
+                <img src="//lorempixel.com/100/80" alt="">
+            </a>
+        </li>
+        <li class="slideshow_item">
+            <a class="slideshow_pic" href="#">
+                <img src="//lorempixel.com/100/81" alt="">
+            </a>
+        </li>
+        <li class="slideshow_item">
+            <a class="slideshow_pic" href="#">
+                <img src="//lorempixel.com/100/82" alt="">
+            </a>
+        </li>
+
+    </ul>
+</div>
+</div>
+
+</body>
+</html>

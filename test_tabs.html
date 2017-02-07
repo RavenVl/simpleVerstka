@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        .tabs_controls-items{
+            display: inline-block;
+            margin-left: 10px;
+            background: #2c3e50;
+            transition:  top 1s ease-out 0.5s;
+        }
+        .tabs_controls-items :hover{
+            background: #2ecc71;
+        }
+        .tabs_controls-items.active{
+            background: #2ecc71;
+        }
+        .tabs_controls-items:first-child{
+            margin-left: 0;
+        }
+
+        .tabs_controls-link{
+            color: #ffffff;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: block;
+            padding: 3px 7px;
+        }
+        .tabs_list{
+            border: 1px dashed #cccccc;
+        }
+
+        .tabs_item{
+            list-style: none outside none;
+            display: none;
+        }
+        .tabs_item.active{
+            display:block;
+        }
+    </style>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script>
+        $(function () {
+            $('.tabs_controls-link').on("click",function (e) {
+                e.preventDefault();
+                var item = $(this).closest('.tabs_controls-items');
+                var contentItem = $('.tabs_item');
+                var itemPosition = item.data('class');
+                contentItem.filter('.tabs_item_'+itemPosition)
+                    .add(item)
+                    .addClass('active')
+                    .siblings()
+                    .removeClass('active');
+                //console.log(itemPosition);
+                //var itemPosition = item.index();
+//                contentItem.eq(itemPosition)
+//                    .add(item)
+//                    .addClass('active')
+//                    .siblings()
+//                    .removeClass('active');
+//                item.addClass('active')
+//                    .siblings()
+//                    .removeClass('active');
+
+            })
+        })
+    </script>
+
+
+</head>
+<body>
+<div class="container bs-cont">
+    <ul class="tabs_controls">
+        <li class="tabs_controls-items active" data-class="c1">
+            <a class="tabs_controls-link" href="#">Link1</a>
+        </li>
+        <li class="tabs_controls-items" data-class="c2">
+            <a class="tabs_controls-link" href="#">Link2</a>
+        </li>
+        <li class="tabs_controls-items" data-class="c3">
+            <a class="tabs_controls-link" href="#">Link3</a>
+        </li>
+
+    </ul>
+    <ul class="tabs_list">
+        <li class="tabs_item tabs_item_c1 active">
+            <h2>Tab 1</h2>
+            <p>
+                <span>text 1    text 1   text 1  text 1 text 1text 1text 1 v vtext 1text 1 text 1 v vtext 1</span>
+            </p>
+        </li>
+        <li class="tabs_item tabs_item_c2">
+            <h2>Tab 2</h2>
+            <p>
+                <span>text2 text2 xtext2   text2 text2 xtext2   text2 text2 xtext2   text2 text2 xtext2   </span>
+            </p>
+        </li>
+        <li class="tabs_item tabs_item_c3">
+            <h2>Tab 3</h2>
+            <p>
+                <span>text 3    text 3   text 3  text 3 text 3text 3text 3 v vtext 3text 3 text 3 v vtext 3</span>
+            </p>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        .accordeon {
+            width: 300px;
+            margin: 100px;
+        }
+
+        .accordeon__trigger {
+
+            text-decoration: none;
+            color: #333;
+            background-color: #f5f5f5;
+            display: block;
+            padding: 6px;
+            border: 1px solid #ddd;
+        }
+
+        .accordeon__inner {
+            margin-left: 20px;
+        }
+
+        .accordeon__item {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+
+        .accordeon__inner-link {
+            text-decoration: none;
+            color: #34495e;
+            border-bottom: 1px dotted #34495e;
+        }
+
+        .accordeon__inner-item {
+            list-style: disc;
+            margin-bottom: 2px;
+        }
+
+
+        .accordeon__inner {
+            display: none;
+        }
+
+    </style>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script>
+        $(function () {
+            $('.accordeon__trigger').on('click', function(e){
+                e.preventDefault();
+
+                var
+                        $this = $(this),
+                        item = $this.closest('.accordeon__item'),
+                        list = $this.closest('.accordeon__list'),
+                        items = list.find('.accordeon__item'),
+                        content = item.find('.accordeon__inner'),
+                        otherContent = list.find('.accordeon__inner'),
+                        duration = 300;
+
+                if (!item.hasClass('active')) {
+                    items.removeClass('active');
+                    item.addClass('active');
+
+                    otherContent.stop(true, true).slideUp(duration);
+                    content.stop(true, true).slideDown(duration);
+
+                } else {
+                    content.stop(true, true).slideUp(duration);
+                    item.removeClass('active');
+                }
+
+            });
+        })
+
+
+    </script>
+    <title>Title</title>
+</head>
+<body>
+<div class="container bs-cont">
+    <div class="accordeon">
+        <ul class="accordeon__list">
+            <li class="accordeon__item">
+                <a class="accordeon__trigger" href="#">Link 1</a>
+                <ul class="accordeon__inner">
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="accordeon__item">
+                <a class="accordeon__trigger" href="#">Link 1</a>
+                <ul class="accordeon__inner">
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="accordeon__item">
+                <a class="accordeon__trigger" href="#">Link 1</a>
+                <ul class="accordeon__inner">
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                    <li class="accordeon__inner-item">
+                        <a class="accordeon__inner-link" href="#"> Inner link 1</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
