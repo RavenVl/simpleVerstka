@@ -100,40 +100,40 @@
 <script>
     // этот код помечает картинки цифрами, для удобства разработки
     // его можно убрать, если не нужен
-    var curPosition = 0;
-    var lis = document.getElementsByTagName('li');
-    document.querySelector('#left').addEventListener('click', moveLeft);
-    document.querySelector('#right').addEventListener('click', moveRight);
-    function moveLeft() {
-        curPosition -= 3;
-        if (curPosition < 0) {
-            curPosition = 0;
-        }
-        showImg();
+    function Slider() {
+        this.curPosition = 0;
+        this.lis = document.getElementsByTagName('li');
+        document.querySelector('#left').addEventListener('click', this.moveLeft.bind(this));
+        document.querySelector('#right').addEventListener('click', this.moveRight.bind(this));
     }
-    function moveRight() {
-        curPosition += 3;
-        if (curPosition > 9) {
-            curPosition = 9;
+    Slider.prototype.moveRight = function () {
+        this.curPosition += 3;
+        if (this.curPosition > 9) {
+            this.curPosition = 9;
         }
-        showImg();
-    }
-    function showImg() {
-        for (let i = 0; i < lis.length; i++) {
-            let obj = lis[i];
+        this.showImg();
+    };
+    Slider.prototype.moveLeft = function () {
+        this.curPosition -= 3;
+        if (this.curPosition < 0) {
+            this.curPosition = 0;
+        }
+        this.showImg();
+    };
+    Slider.prototype.showImg = function () {
+        for (let i = 0; i < this.lis.length; i++) {
+            let obj = this.lis[i];
             obj.style.order = 0;
         }
-        for (let i = curPosition; i < curPosition + 3; i++) {
-            let obj = lis[i];
+        for (let i = this.curPosition; i < this.curPosition + 3; i++) {
+            let obj = this.lis[i];
             obj.style.order = -1;
-
         }
-    }
+    };
+    var slider = new Slider();
+
 </script>
 
-<script>
-    // ваш код..
-</script>
 </body>
 
 </html>
